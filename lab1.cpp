@@ -125,7 +125,7 @@ double * simplex_method(std::vector<double> c, std::vector<double> b, double ** 
 		k++;
 	}
 
-	print(arr, b.size(), c.size());
+	x = print(arr, b.size(), c.size());
 
 	while (not_reference(arr,b.size()))
 	{
@@ -187,7 +187,7 @@ double * simplex_method(std::vector<double> c, std::vector<double> b, double ** 
 		arr[i][j] = 1.0 / arr[i][j];
 		ri = i;
 		rj = j;
-		print(arr, b.size(), c.size());
+		x = print(arr, b.size(), c.size());
 	}
 
 	cout << endl << "Найдено опорное решение. Проводим проверку на оптимальность.";
