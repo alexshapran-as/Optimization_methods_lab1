@@ -10,6 +10,7 @@ bool not_optimal(double ** arr, unsigned int m, unsigned int n);
 std::vector<std::string> print(double ** arr, unsigned int m, unsigned int n);
 unsigned int ri = {0};
 unsigned int rj = {0};
+std::string min_max;
 
 int main()
 {
@@ -26,15 +27,24 @@ int main()
 	unsigned int n = {0};
 	unsigned int m = {0};
 
+	cout << endl << "К чему стремится ЦФ F(min/max)?" << endl;
+	cin >> min_max;
 	cout << endl << "Заполните вектор коэффициентов c = [c1,c2,...,cn] целевой функции" 
 	" (ЦФ) F (q - для прекращения ввода):" << endl << "c[" << 1 << "] = ";
 	cin >> temp;
-	c.push_back(temp);
+	if (min_max == "min")
+		c.push_back(temp);
+	else if (min_max == "max")
+		c.push_back(-temp);
+	
 	cout << "c[" << 2 << "] = ";
 	unsigned int i = {1};
 	for (; cin >> temp; ++i)
 	{
-		c.push_back(temp);
+		if (min_max == "min")
+			c.push_back(temp);
+		else if (min_max == "max")
+			c.push_back(-temp);
 		if (i == 1)
 			cout << "c[" << i + 2 << "] = ";
 		else
@@ -249,7 +259,11 @@ double * simplex_method(std::vector<double> c, std::vector<double> b, double ** 
 	{
 		cout << endl << x[j] << " = " << arr[l++][0] << ";";
 	}
-	cout << endl << "F = " << arr[b.size()][0];
+	cout << endl;
+	if (min_max == "min") 
+		cout << "F = " << arr[b.size()][0];
+	else if (min_max == "max")
+		cout << "F = " << -arr[b.size()][0];
 }
 
 bool not_reference(double ** arr, unsigned int m)
