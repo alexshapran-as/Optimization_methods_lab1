@@ -249,6 +249,7 @@ double * simplex_method(std::vector<double> c, std::vector<double> b, double ** 
 	{
 		cout << endl << x[j] << " = " << arr[l++][0] << ";";
 	}
+	cout << endl << "F = " << arr[b.size()][0];
 }
 
 bool not_reference(double ** arr, unsigned int m)
